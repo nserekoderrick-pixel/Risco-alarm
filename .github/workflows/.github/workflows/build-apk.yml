@@ -16,7 +16,7 @@ jobs:
         run: |
           if [ -f RiscoProSysController.zip ] && [ ! -f RiscoProSysController/settings.gradle.kts ]; then
             unzip -o RiscoProSysController.zip
-          fi
+          fi8
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -29,6 +29,8 @@ jobs:
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
+  with:
+    gradle-version: '8.7'
 
       - name: Build debug APK
         working-directory: RiscoProSysController
