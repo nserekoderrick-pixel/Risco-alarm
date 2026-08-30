@@ -24,7 +24,6 @@ jobs:
           touch gradle.properties
           grep -q "android.useAndroidX" gradle.properties || echo "android.useAndroidX=true" >> gradle.properties
           grep -q "android.enableJetifier" gradle.properties || echo "android.enableJetifier=false" >> gradle.properties
-          echo "----- gradle.properties -----"
           cat gradle.properties
 
       - name: Set up JDK 17
