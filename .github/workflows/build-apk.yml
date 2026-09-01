@@ -17,20 +17,14 @@ jobs:
           if [ -f RiscoProSysController.zip ] && [ ! -f RiscoProSysController/settings.gradle.kts ]; then
             unzip -o RiscoProSysController.zip
           fi
-- name: Ensure gradle.properties has required AndroidX flags
+
+      - name: Ensure gradle.properties has required flags
         working-directory: RiscoProSysController
         run: |
           touch gradle.properties
           grep -q "android.useAndroidX" gradle.properties || echo "android.useAndroidX=true" >> gradle.properties
           grep -q "android.enableJetifier" gradle.properties || echo "android.enableJetifier=false" >> gradle.properties
           grep -q "org.gradle.jvmargs" gradle.properties || echo "org.gradle.jvmargs=-Xmx3072m -XX:MaxMetaspaceSize=1024m" >> gradle.properties
-          cat gradle.properties
-      - name: Ensure gradle.properties has required AndroidX flags
-        working-directory: RiscoProSysController
-        run: |
-          touch gradle.properties
-          grep -q "android.useAndroidX" gradle.properties || echo "android.useAndroidX=true" >> gradle.properties
-          grep -q "android.enableJetifier" gradle.properties || echo "android.enableJetifier=false" >> gradle.properties
           cat gradle.properties
 
       - name: Set up JDK 17
